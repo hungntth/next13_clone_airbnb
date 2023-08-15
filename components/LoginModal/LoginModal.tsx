@@ -1,6 +1,8 @@
 "use client";
 
 import useLoginModal from "@/hooks/useLoginModal";
+import useRegisterModal from "@/hooks/useRegisterModal";
+import useToggleLoginRegister from "@/hooks/useToggleLoginRegister";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,13 +11,16 @@ import { toast } from "react-hot-toast";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../Button/Button";
-import Heading from "../Heading/Heading";
+import Heading from "../Heading";
 import Input from "../Input";
 import Modal from "../Modal/Modal";
+
+const LOGIN_SWTICH = true;
 
 export default function LoginModal() {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -49,6 +54,13 @@ export default function LoginModal() {
       }
     });
   };
+
+  const onToggle = useToggleLoginRegister(
+    loginModal,
+    registerModal,
+    LOGIN_SWTICH
+  );
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome back" subtitle="Login to your account!" />
@@ -71,6 +83,7 @@ export default function LoginModal() {
       />
     </div>
   );
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
@@ -93,7 +106,7 @@ export default function LoginModal() {
         <p>
           First time using Airbnb?
           <span
-            // onClick={onToggle}
+            onClick={() => onToggle()}
             className="
               text-neutral-800
               cursor-pointer 

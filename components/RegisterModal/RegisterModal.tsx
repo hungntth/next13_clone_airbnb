@@ -1,6 +1,8 @@
 "use client";
 
+import useLoginModal from "@/hooks/useLoginModal";
 import useRegisterModal from "@/hooks/useRegisterModal";
+import useToggleLoginRegister from "@/hooks/useToggleLoginRegister";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
@@ -9,12 +11,15 @@ import { toast } from "react-hot-toast";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../Button/Button";
-import Heading from "../Heading/Heading";
+import Heading from "../Heading";
 import Input from "../Input";
 import Modal from "../Modal/Modal";
 
+const LOGIN_SWTICH = false;
+
 export default function RegisterModal() {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -44,6 +49,13 @@ export default function RegisterModal() {
         setIsLoading(false);
       });
   };
+
+  const onToggle = useToggleLoginRegister(
+    loginModal,
+    registerModal,
+    LOGIN_SWTICH
+  );
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
@@ -100,7 +112,7 @@ export default function RegisterModal() {
         <p>
           Already have an account?
           <span
-            // onClick={onToggle}
+            onClick={() => onToggle()}
             className="
               text-neutral-800
               cursor-pointer 

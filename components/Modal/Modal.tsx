@@ -162,14 +162,14 @@ export default function Modal({
               <Button
                 disabled={disabled}
                 label={secondaryActionLabel}
-                onClick={handleSecondaryAction}
+                onClick={() =>handleSecondaryAction()}
                 outline
               />
             )}
             <Button
               disabled={disabled}
               label={actionLabel}
-              onClick={handleSubmit}
+              onClick={() =>handleSubmit()}
             />
           </div>
           {footer}

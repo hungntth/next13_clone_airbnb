@@ -5,7 +5,7 @@ import ClientOnly from "@/components/ClientOnly";
 import RegisterModal from "@/components/RegisterModal";
 import ToasterProvider from "@/providers/ToasterProvider";
 import LoginModal from "@/components/LoginModal";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 const inter = Nunito({ subsets: ["latin"] });
 

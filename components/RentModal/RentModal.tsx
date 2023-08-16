@@ -52,7 +52,12 @@ export default function RentModal() {
   });
 
   const category = watch("category");
-  const location = watch("location")
+  const location = watch("location");
+  const guestCount = watch("guestCount");
+  const roomCount = watch('roomCount');
+  const bathroomCount = watch('bathroomCount');
+  const imageSrc = watch('imageSrc');
+
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -97,11 +102,19 @@ export default function RentModal() {
   switch (step) {
     case STEPS.LOCATION:
       bodyContent = (
-        <BodyLocation onChange={(value) => setCustomValue("location", value)} value ={location} />
+        <BodyLocation
+          onChange={(value) => setCustomValue("location", value)}
+          value={location}
+        />
       );
       break;
     case STEPS.INFO:
-      bodyContent = <BodyInfo />;
+      bodyContent = <BodyInfo 
+      setCustomValue={setCustomValue}
+      guestCount={guestCount}
+      bathroomCount={bathroomCount}
+      roomCount={roomCount}
+      />;
       break;
     case STEPS.IMAGES:
       bodyContent = <BodyImages />;

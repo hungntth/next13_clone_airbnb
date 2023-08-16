@@ -123,10 +123,18 @@ export default function RentModal() {
       );
       break;
     case STEPS.DESCRIPTION:
-      bodyContent = <BodyDescription />;
+      bodyContent = (
+        <BodyDescription
+          isLoading={isLoading}
+          register={register}
+          errors={errors}
+        />
+      );
       break;
     case STEPS.PRICE:
-      bodyContent = <BodyPrice />;
+      bodyContent = (
+        <BodyPrice isLoading={isLoading} register={register} errors={errors} />
+      );
       break;
     default:
       break;

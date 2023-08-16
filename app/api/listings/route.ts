@@ -31,8 +31,6 @@ export async function POST(
     }
   });
 
-  console.log(location)
-
   const listing = await prisma.listing.create({
     data: {
       title,

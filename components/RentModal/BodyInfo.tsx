@@ -1,6 +1,6 @@
 import React from "react";
 import Heading from "../Heading";
-import Counter from "../Counter/Counter";
+import Counter from "../Counter";
 
 interface BodyInfoProps {
   setCustomValue: (id: string, value: any) => void;

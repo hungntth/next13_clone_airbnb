@@ -54,10 +54,9 @@ export default function RentModal() {
   const category = watch("category");
   const location = watch("location");
   const guestCount = watch("guestCount");
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
-  const imageSrc = watch('imageSrc');
-
+  const roomCount = watch("roomCount");
+  const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -109,15 +108,19 @@ export default function RentModal() {
       );
       break;
     case STEPS.INFO:
-      bodyContent = <BodyInfo 
-      setCustomValue={setCustomValue}
-      guestCount={guestCount}
-      bathroomCount={bathroomCount}
-      roomCount={roomCount}
-      />;
+      bodyContent = (
+        <BodyInfo
+          setCustomValue={setCustomValue}
+          guestCount={guestCount}
+          bathroomCount={bathroomCount}
+          roomCount={roomCount}
+        />
+      );
       break;
     case STEPS.IMAGES:
-      bodyContent = <BodyImages />;
+      bodyContent = (
+        <BodyImages setCustomValue={setCustomValue} imageSrc={imageSrc} />
+      );
       break;
     case STEPS.DESCRIPTION:
       bodyContent = <BodyDescription />;
